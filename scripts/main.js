@@ -8,7 +8,13 @@ var anewfield=null;
 var CHANGEMEB=null;
 
 function changeToTeam() {
-    Call.sendChatMessage("/js findp('"+Vars.player.name+"').team(Team.get("+value+"))");
+	 if (Vars.net.client()){
+		//remote client (sever?)
+    	Call.sendChatMessage("/js findp('"+Vars.player.name+"').team(Team.get("+value+"))");
+	 }
+	 else{
+		 Vars.player.team(Team.get(value))
+	 }
 }
 
 
@@ -17,29 +23,42 @@ function setUpMod(){
 }
 
 function antiCoreGreif() {
-	 Call.sendChatMessage("/js Vars.state.rules.fire=false");
-	 Call.sendChatMessage("/js Vars.state.rules.reactorExplosions=false");
-	 Call.sendChatMessage("/js Vars.state.rules.damageExplosions=false");
-	 Call.sendChatMessage("/js Vars.state.rules.canGameOver=false");
-	 Call.sendChatMessage("/js Vars.state.rules.defaultTeam.cores().each(c=>{c.health=1E100})");
+	 	Call.sendChatMessage("/js Vars.state.rules.fire=false");
+	 	Call.sendChatMessage("/js Vars.state.rules.reactorExplosions=false");
+	 	Call.sendChatMessage("/js Vars.state.rules.damageExplosions=false");
+	 	Call.sendChatMessage("/js Vars.state.rules.canGameOver=false");
+	 	Call.sendChatMessage("/js Vars.state.rules.defaultTeam.cores().each(c=>{c.health=1E100})");
 }
 
 function changeToSharded() {
-    Call.sendChatMessage("/js findp('"+Vars.player.name+"').team(Team.sharded)")
+	 if (Vars.net.client()){
+		//remote client (sever?)
+    	Call.sendChatMessage("/js findp('"+Vars.player.name+"').team(Team.sharded)")
+	 }
+	 else{
+		 Vars.player.team(Team.sharded)
+	 }
 }
 
 
 function protect() {
-    Call.sendChatMessage("/js findp('"+Vars.player.name+"').unit().health=100E9999")
-}
-
-
-function endMap() {
-    Call.sendChatMessage("/js Events.fire(GameOverEvent(Team.derelict))")
+	 if (Vars.net.client()){
+		//remote client (sever?)
+    	Call.sendChatMessage("/js findp('"+Vars.player.name+"').unit().health=100E9999")
+	 }
+	 else{
+		 Vars.player.unit().health=10E9999
+	 }
 }
 
 function endLife() {
-    Call.sendChatMessage("/js Groups.unit.each(u=>u.kill())")
+	 if (Vars.net.client()){
+		//remote client (sever?)
+    	Call.sendChatMessage("/js Groups.unit.each(u=>u.kill())")
+	 }
+	 else{
+		 Groups.unit.each(u=>u.kill())
+	 }
 }
 
 
