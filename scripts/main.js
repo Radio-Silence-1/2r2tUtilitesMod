@@ -22,6 +22,10 @@ function setUpMod(){
 	Call.sendChatMessage("/js findp=(name)=>Groups.player.find(e=>Strings.stripColors(e.name)==name);")
 }
 
+function changeToGamma(){
+	Call.sendChatMessage("/js Groups.unit.each(u=>u.type=UnitTypes.gamma)")
+}
+
 function antiCoreGreif() {
 	 	Call.sendChatMessage("/js Vars.state.rules.fire=false");
 	 	Call.sendChatMessage("/js Vars.state.rules.reactorExplosions=false");
@@ -97,6 +101,7 @@ ui.onLoad(() => {
 	 table.row();
 	 table.button("End Life On Earth", Icon.modeSurvival, endLife).width(250)
 	 table.row();
+	 table.button("Change To Gamma", Icon.modeSurvival, changeToGamma).width(250)
 
     dialog.addCloseButton();
 });
