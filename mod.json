@@ -2,7 +2,7 @@
 	"name": "2r2t utilty mod",
 	"displayName": "2R2T Mod",
 	"author":"No",
-	"description": "A custom mod for 2r2t, I would suggest getting the brother mod '2r2t Utility Extension' \n\nRequires DeltaNedas/ui-lib to work",
+	"description": "A custom mod for 2r2t, \n\nRequires DeltaNedas/ui-lib to work",
 	"version": "You Dont See This",
 	"minGameVersion": 105,
 	"hidden": true
